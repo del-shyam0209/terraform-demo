@@ -5,5 +5,5 @@ tags = {
   Onwer  = "del-lza-demo"
   backup = "true"
 }
-subnet_id     = "subnet-067f2af2e8f9c8217"
-vault_name    = "patch"
+subnet_id     = "subnet-0a9fcedc790c4638b"
+vault_name    = "del-lza-demo-backup-vault"

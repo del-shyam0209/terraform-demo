@@ -49,7 +49,7 @@ resource "aws_ssm_maintenance_window" "install-a" {
   cutoff            = 1
   description       = "Maintenance window for applying patches"
   duration          = 2
-  schedule          = "cron(0 3 ? * TUE *)"
+  schedule          = "cron(15 14 ? * TUE *)"
   tags              = var.tags
   schedule_timezone = "NZ"
 }
@@ -59,7 +59,7 @@ resource "aws_ssm_maintenance_window" "install-b" {
   cutoff            = 1
   description       = "Maintenance window for applying patches"
   duration          = 2
-  schedule          = "cron(15 3 ? * TUE *)"
+  schedule          = "cron(30 14 ? * TUE *)"
   tags              = var.tags
   schedule_timezone = "NZ"
 
@@ -151,7 +151,7 @@ resource "aws_backup_plan" "plan" {
   rule {
     rule_name         = "del-lza-demo-rule"
     target_vault_name = var.vault_name
-    schedule          = "cron(0 14 ? * MON *)"
+    schedule          = "cron(15 1 ? * TUE *)"
     lifecycle {
       delete_after = 7
     }
@@ -166,7 +166,7 @@ resource "aws_backup_plan" "plan" {
 }
 
 resource "aws_iam_role" "backup" {
-  name               = "backup-role"
+  name               = "del-lza-demo-backup-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role_backup.json
 }
 
